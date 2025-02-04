@@ -10,6 +10,7 @@ public class Wave : MonoBehaviour
     [SerializeField] private int columns = 11;
 
     [SerializeField] private Invader invaderPrefab = null;
+    [SerializeField] private Invader invaderPrefab2 = null;
 
     // Initial bounds in which invaders are spawning.
     [SerializeField] private Vector2 bounds;
@@ -65,12 +66,25 @@ public class Wave : MonoBehaviour
         {
             for (int j = 0; j < rows; j++)
             {
-                Invader invader = GameObject.Instantiate<Invader>(invaderPrefab, GetPosition(i, j), Quaternion.identity, transform);
-                invader.Initialize(new Vector2Int(i, j));
-                invader.onDestroy += RemoveInvader;
-                invaders.Add(invader);
-                invaderPerColumn[i].invaders.Add(invader);
-                invaderPerRow[j].invaders.Add(invader);
+                int random = Random.Range(0, 2);
+                if (random == 0)
+                {
+                    Invader invader = GameObject.Instantiate<Invader>(invaderPrefab, GetPosition(i, j), Quaternion.identity, transform);
+                    invader.Initialize(new Vector2Int(i, j));
+                    invader.onDestroy += RemoveInvader;
+                    invaders.Add(invader);
+                    invaderPerColumn[i].invaders.Add(invader);
+                    invaderPerRow[j].invaders.Add(invader);
+                }
+                else
+                {
+                    Invader invader = GameObject.Instantiate<Invader>(invaderPrefab2, GetPosition(i, j), Quaternion.identity, transform);
+                    invader.Initialize(new Vector2Int(i, j));
+                    invader.onDestroy += RemoveInvader;
+                    invaders.Add(invader);
+                    invaderPerColumn[i].invaders.Add(invader);
+                    invaderPerRow[j].invaders.Add(invader);
+                }
             }
         }
         
