@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,8 +20,12 @@ public class GameManager : MonoBehaviour
     
     //Lancement jeu avec une touche
     private bool _isGameStarted = false;
-    [SerializeField] private GameObject _ui;
+    [SerializeField] private List<GameObject> _uiElements = new List<GameObject>();
     [SerializeField] private GameObject _wave;
+    
+    //Scoring
+    private int _playerScore = 0;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
     void Awake()
     {
@@ -30,10 +36,17 @@ public class GameManager : MonoBehaviour
     {
         if (!_isGameStarted && Input.GetKeyDown(KeyCode.Space))
         {
-            _ui.SetActive(false);
+            foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
             _wave.SetActive(true);
             _isGameStarted = true;
         }
+        
+        _scoreText.text = $"Score: {_playerScore}";
+    }
+
+    public void UpdatePlayerScore()
+    {
+        _playerScore++;
     }
 
     public Vector3 KeepInBounds(Vector3 position)

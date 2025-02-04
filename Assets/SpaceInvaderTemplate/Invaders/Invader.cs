@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Invader : MonoBehaviour
 {
+    //Scoring
+    private GameManager _gameManager;
+    
     [SerializeField] private Bullet bulletPrefab = null;
     [SerializeField] private Transform shootAt = null;
     [SerializeField] private string collideWithTag = "Player";
@@ -16,6 +19,7 @@ public class Invader : MonoBehaviour
     public void Initialize(Vector2Int gridIndex)
     {
         this.GridIndex = gridIndex;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void OnDestroy()
@@ -29,6 +33,7 @@ public class Invader : MonoBehaviour
 
         Destroy(gameObject);
         Destroy(collision.gameObject);
+        _gameManager.UpdatePlayerScore();
     }
 
     public void Shoot()
