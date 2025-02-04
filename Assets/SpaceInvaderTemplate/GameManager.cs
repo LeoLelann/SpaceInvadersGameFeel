@@ -1,5 +1,7 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 [DefaultExecutionOrder(-100)]
@@ -13,10 +15,25 @@ public class GameManager : MonoBehaviour
     private Bounds Bounds => new Bounds(transform.position, new Vector3(bounds.x, bounds.y, 1000f));
 
     [SerializeField] private float gameOverHeight;
+    
+    //Lancement jeu avec une touche
+    private bool _isGameStarted = false;
+    [SerializeField] private GameObject _ui;
+    [SerializeField] private GameObject _wave;
 
     void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        if (!_isGameStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            _ui.SetActive(false);
+            _wave.SetActive(true);
+            _isGameStarted = true;
+        }
     }
 
     public Vector3 KeepInBounds(Vector3 position)
