@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 [DefaultExecutionOrder(-100)]
@@ -13,10 +17,46 @@ public class GameManager : MonoBehaviour
     private Bounds Bounds => new Bounds(transform.position, new Vector3(bounds.x, bounds.y, 1000f));
 
     [SerializeField] private float gameOverHeight;
+    
+    //Lancement jeu avec une touche and reset after win
+    private bool _isGameStarted = false;
+    [SerializeField] private List<GameObject> _uiElements = new List<GameObject>();
+    [SerializeField] private GameObject _wave;
+    [SerializeField] private GameObject _newWave;
+    
+    //Scoring
+    private int _playerScore = 0;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    
 
     void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        if (!_isGameStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
+            _wave.SetActive(true);
+            _isGameStarted = true;
+        }
+        
+        _scoreText.text = $"Score: {_playerScore}";
+    }
+
+    public void UpdatePlayerScore()
+    {
+        _playerScore++;
+    }
+
+    public void StartNewWave()
+    {
+        _newWave = Instantiate(_wave, transform.position + new Vector3(0, 1.75f, 0), Quaternion.identity);
+        Destroy(_wave);
+        _wave = _newWave;
+        //_wave.SetActive(true);
     }
 
     public Vector3 KeepInBounds(Vector3 position)
