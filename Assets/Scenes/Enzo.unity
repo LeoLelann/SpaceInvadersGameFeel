@@ -682,6 +682,7 @@ MonoBehaviour:
   - {fileID: 1725114929}
   - {fileID: 635072316}
   _wave: {fileID: 5712830726175393254}
+  _newWave: {fileID: 0}
   _scoreText: {fileID: 983521262}
 --- !u!4 &879569044
 Transform:
