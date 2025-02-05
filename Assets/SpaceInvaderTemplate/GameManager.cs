@@ -9,6 +9,8 @@ using UnityEngine.UIElements;
 [DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private SoundManager _soundManager;
+    
     public enum DIRECTION { Right = 0, Up = 1, Left = 2, Down = 3 }
 
     public static GameManager Instance = null;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
             foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
             _wave.SetActive(true);
             _isGameStarted = true;
+            _soundManager.PlaySound(1, 0);
         }
         
         _scoreText.text = $"Score: {_playerScore}";
