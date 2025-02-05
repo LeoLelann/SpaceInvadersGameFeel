@@ -18,14 +18,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float gameOverHeight;
     
-    //Lancement jeu avec une touche
+    //Lancement jeu avec une touche and reset after win
     private bool _isGameStarted = false;
     [SerializeField] private List<GameObject> _uiElements = new List<GameObject>();
     [SerializeField] private GameObject _wave;
+    [SerializeField] private GameObject _newWave;
     
     //Scoring
     private int _playerScore = 0;
     [SerializeField] private TextMeshProUGUI _scoreText;
+    
 
     void Awake()
     {
@@ -47,6 +49,14 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerScore()
     {
         _playerScore++;
+    }
+
+    public void StartNewWave()
+    {
+        _newWave = Instantiate(_wave, transform.position + new Vector3(0, 1.75f, 0), Quaternion.identity);
+        Destroy(_wave);
+        _wave = _newWave;
+        //_wave.SetActive(true);
     }
 
     public Vector3 KeepInBounds(Vector3 position)

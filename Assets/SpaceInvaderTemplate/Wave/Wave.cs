@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
+    private GameManager _gameManager;
+    
     enum Move { Left = 0, Down = 1, Right = 2 }
     readonly Vector3[] directions = { Vector3.left, Vector3.down, Vector3.right };
 
@@ -13,7 +15,7 @@ public class Wave : MonoBehaviour
     [SerializeField] private Invader invaderPrefab2 = null;
 
     // Initial bounds in which invaders are spawning.
-    [SerializeField] private Vector2 bounds;
+    [SerializeField] public Vector2 bounds;
 
     // Difficulty progress depending on enemy left ratio
     [SerializeField] private AnimationCurve difficultyProgress = AnimationCurve.Linear(0, 0, 1, 1);
@@ -50,6 +52,8 @@ public class Wave : MonoBehaviour
 
     void Awake()
     {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
         shootCooldown = timeBeforeFirstShoot;
 
         for (int i = 0; i < columns; i++)
@@ -117,7 +121,11 @@ public class Wave : MonoBehaviour
 
     void UpdateMovement()
     {
-        if(invaders.Count <= 0) { return; }
+        if (invaders.Count <= 0)
+        {
+            _gameManager.StartNewWave();
+            return;
+        }
 
         // Speed depends on remaining invaders ratio
         float t = 1f - (invaders.Count - 1) / (float)((rows * columns) - 1);
