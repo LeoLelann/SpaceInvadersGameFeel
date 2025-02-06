@@ -92,7 +92,7 @@ public class Wave : MonoBehaviour
                 }
                 else
                 {
-                    Invader invader = GameObject.Instantiate<Invader>(invaderPrefab2, GetPosition(i, j), Quaternion.identity, transform);
+                    Invader invader = GameObject.Instantiate<Invader>(invaderPrefab3, GetPosition(i, j), Quaternion.identity, transform);
                     invader.Initialize(new Vector2Int(i, j));
                     invader.onDestroy += RemoveInvader;
                     invaders.Add(invader);
