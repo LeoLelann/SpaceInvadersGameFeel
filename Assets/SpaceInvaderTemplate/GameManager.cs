@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
     {
         if (!_isGameStarted && Input.GetKeyDown(KeyCode.Space))
         {
+            _soundManager.PlaySound(1, 1);
             foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
             _wave.SetActive(true);
             _isGameStarted = true;
-            _soundManager.PlaySound(1, 0);
         }
         
         _scoreText.text = $"Score: {_playerScore}";
