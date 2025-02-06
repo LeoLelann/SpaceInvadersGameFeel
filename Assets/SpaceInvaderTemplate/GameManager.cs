@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         if (!_isGameStarted && Input.GetKeyDown(KeyCode.Space))
         {
-            _soundManager.PlaySound(1, 1);
+            //_soundManager.PlaySound(1, 1);
             foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
             _wave.SetActive(true);
             _isGameStarted = true;

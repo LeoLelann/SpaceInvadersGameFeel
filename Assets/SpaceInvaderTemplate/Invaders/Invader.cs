@@ -35,6 +35,11 @@ public class Invader : MonoBehaviour
         col = GetComponent<Collider2D>();
     }
 
+    public void OnDestroy()
+    {
+        onDestroy?.Invoke(this);
+        Destroy(gameObject);
+    }
     public void Death()
     {
         col.enabled = false;
@@ -62,7 +67,7 @@ public class Invader : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        OnDestroy();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
