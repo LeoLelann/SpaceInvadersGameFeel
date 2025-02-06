@@ -29,7 +29,9 @@ public class Invader : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag != collideWithTag) { return; }
+        if(collision.gameObject.tag != collideWithTag && collision.gameObject.tag == "level1") { return; }
+        
+        Debug.Log("level 1");
 
         Destroy(gameObject);
         Destroy(collision.gameObject);

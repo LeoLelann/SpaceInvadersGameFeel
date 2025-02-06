@@ -48,7 +48,7 @@ public class Wave : MonoBehaviour
 
     List<Invader> invaders = new();
     List<Column> invaderPerColumn = new(); // Keeps track of invaders per column. A column will be removed if empty.
-    List<Row> invaderPerRow = new(); // Keeps track of invaders per row. A row will be removed if empty.
+    /*public*/ List<Row> invaderPerRow = new(); // Keeps track of invaders per row. A row will be removed if empty.
 
     void Awake()
     {
@@ -257,6 +257,14 @@ public class Wave : MonoBehaviour
     float GetRowPosition(int row)
     {
         return Mathf.Lerp(Bounds.min.y, Bounds.max.y, row / (float)(rows - 1));
+    }
+    public float GetLowestRowPosition()
+    {
+        if (invaderPerRow.Count > 0)
+        {
+            return GetRowPosition(invaderPerRow[0].id);
+        }
+        return float.MaxValue;
     }
 
     public void OnDrawGizmos()
