@@ -200,7 +200,7 @@ Shader "New Amplify Shader"
 				float4 positionCS = IN.positionCS;
 				float3 positionWS = IN.positionWS;
 
-				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 1, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
+				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 0.3679245, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
 				float2 texCoord30 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
 				float smoothstepResult33 = smoothstep( 0.77 , 0.0 , length( (texCoord30*1.0 + -0.5) ));
 				float2 temp_output_1_0_g1 = float2( 1,1 );
@@ -415,7 +415,7 @@ Shader "New Amplify Shader"
 				float4 positionCS = IN.positionCS;
 				float3 positionWS = IN.positionWS;
 
-				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 1, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
+				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 0.3679245, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
 				float2 texCoord30 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
 				float smoothstepResult33 = smoothstep( 0.77 , 0.0 , length( (texCoord30*1.0 + -0.5) ));
 				float2 temp_output_1_0_g1 = float2( 1,1 );
@@ -606,7 +606,7 @@ Shader "New Amplify Shader"
 
 			half4 frag(VertexOutput IN) : SV_TARGET
 			{
-				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 1, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
+				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 0.3679245, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
 				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float smoothstepResult33 = smoothstep( 0.77 , 0.0 , length( (texCoord30*1.0 + -0.5) ));
 				float2 temp_output_1_0_g1 = float2( 1,1 );
@@ -776,7 +776,7 @@ Shader "New Amplify Shader"
 
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
-				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 1, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
+				Gradient gradient44 = NewGradient( 0, 4, 3, float4( 1, 1, 1, 0 ), float4( 0.3679245, 0, 0, 0.3000076 ), float4( 1, 0, 0, 0.7000076 ), float4( 1, 1, 1, 1 ), 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.5000076 ), float2( 0, 1 ), 0, 0, 0, 0, 0 );
 				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float smoothstepResult33 = smoothstep( 0.77 , 0.0 , length( (texCoord30*1.0 + -0.5) ));
 				float2 temp_output_1_0_g1 = float2( 1,1 );
@@ -814,8 +814,8 @@ Shader "New Amplify Shader"
 }
 /*ASEBEGIN
 Version=19801
-Node;AmplifyShaderEditor.RangedFloatNode;15;-1856,-112;Inherit;False;Property;_Size_X;Size_X;1;0;Create;True;0;0;0;False;0;False;0.92;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;19;-1840,-32;Inherit;False;Property;_Size_Y;Size_Y;2;0;Create;True;0;0;0;False;0;False;2.48;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;15;-1856,-112;Inherit;False;Property;_Size_X;Size_X;1;0;Create;True;0;0;0;False;0;False;0.92;0.92;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;19;-1840,-32;Inherit;False;Property;_Size_Y;Size_Y;2;0;Create;True;0;0;0;False;0;False;2.48;2.48;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;20;-1744,176;Inherit;False;Property;_Speed;Speed;3;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;21;-1744,272;Inherit;False;Property;_AspirationExpiration;Aspiration/Expiration;4;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;30;-1728,-480;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -828,7 +828,7 @@ Node;AmplifyShaderEditor.SamplerNode;11;-816,-32;Inherit;True;Property;_TextureS
 Node;AmplifyShaderEditor.SmoothstepOpNode;33;-832,-464;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.77;False;2;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;35;-448,-384;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;36;-176,-384;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;-0.16;False;2;FLOAT;0.57;False;1;FLOAT;0
-Node;AmplifyShaderEditor.GradientNode;44;-128,-608;Inherit;False;0;4;3;1,1,1,0;1,0,0,0.3000076;1,0,0,0.7000076;1,1,1,1;0,0;1,0.5000076;0,1;0;1;OBJECT;0
+Node;AmplifyShaderEditor.GradientNode;44;-128,-608;Inherit;False;0;4;3;1,1,1,0;0.3679245,0,0,0.3000076;1,0,0,0.7000076;1,1,1,1;0,0;1,0.5000076;0,1;0;1;OBJECT;0
 Node;AmplifyShaderEditor.GradientSampleNode;37;112,-544;Inherit;True;2;0;OBJECT;;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.VertexColorNode;46;272,-288;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;45;464,-480;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
@@ -855,4 +855,4 @@ WireConnection;45;0;37;0
 WireConnection;45;1;46;0
 WireConnection;39;1;45;0
 ASEEND*/
-//CHKSM=F41BB18E85073AD5DCE2DF1C83CA43530F62D3B8
+//CHKSM=7703E2982E2D2547F71FE67ACC27D53E801F2DDE

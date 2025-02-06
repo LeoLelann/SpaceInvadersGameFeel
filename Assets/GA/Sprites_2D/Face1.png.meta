@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 322c4b88b741d0b4a972f44efa0f200b
+guid: cad2158489b39864e8ddd1096696e49d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1394942964638293657
-    second: Phase_3_0
+      213: 2611391267376642991
+    second: Face1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Phase_3_0
+      name: Face1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1802
-        height: 1596
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 761edcea3ca24ace0800000000000000
-      internalID: -1394942964638293657
+      spriteID: fabba8d95868d3420800000000000000
+      internalID: 2611391267376642991
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Phase_3_0: -1394942964638293657
+      Face1_0: 2611391267376642991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
