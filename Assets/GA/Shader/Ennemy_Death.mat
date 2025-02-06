@@ -57,7 +57,7 @@ Material:
     - _D_Min: -1
     - _D_max: 1
     - _Distorsion_Intensity: 1
-    - _Intensity_Max: 0.8
+    - _Intensity_Max: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Invader : MonoBehaviour
@@ -15,6 +16,12 @@ public class Invader : MonoBehaviour
     [SerializeField] private Transform shootAt = null;
     [SerializeField] private string collideWithTag = "Player";
 
+    [SerializeField] private Material deathMat;
+    [SerializeField] private float timeToDestroy;
+    SpriteRenderer spriteRenderer;
+    private Collider2D col;
+
+
     internal Action<Invader> onDestroy;
 
     public Vector2Int GridIndex { get; private set; }
@@ -24,11 +31,38 @@ public class Invader : MonoBehaviour
         this.GridIndex = gridIndex;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _player = GameObject.Find("Player");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider2D>();
     }
 
-    public void OnDestroy()
+    public void Death()
     {
-        onDestroy?.Invoke(this);
+        col.enabled = false;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        spriteRenderer.material = deathMat;
+
+        StartCoroutine(DeathAnimation());
+        //float[] intensity = deathMat.GetFloatArray("Intensity_Max");
+    }
+
+    private IEnumerator DeathAnimation()
+    {
+        float elapsedTime = 0f;
+        float startValue = 0f;
+        float endValue = 4f;
+
+        while (elapsedTime < timeToDestroy)
+        {
+            elapsedTime += Time.deltaTime;
+            float lerpValue = Mathf.Lerp(startValue, endValue, elapsedTime / timeToDestroy);
+            spriteRenderer.material.SetFloat("_Intensity_Max", lerpValue);
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -40,8 +74,9 @@ public class Invader : MonoBehaviour
             
         }*/
         
-        Destroy(gameObject);
         Destroy(collision.gameObject);
+        //Destroy(gameObject);
+        Death();
         _gameManager.UpdatePlayerScore();
     }
 

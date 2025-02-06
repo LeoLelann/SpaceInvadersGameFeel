@@ -82,22 +82,9 @@ public class ShakeScreen : MonoBehaviour
             _isShaking1 = true;
             currentShake = StartCoroutine(Shake1());
         }
-        /*        if (Mathf.Abs(lowestInvaderY - player.transform.position.y) <= distToShake1 && !_isShaking1 && !_hasReachShake1)
-                {
-                    _isShaking1 = true;
-                    StartCoroutine(Shake1());
-                }
-                if (Mathf.Abs(lowestInvaderY - player.transform.position.y) <= distToShake2 && !_isShaking2 && _hasReachShake2)
-                {
-                    _isShaking2 = true;
-                    StartCoroutine(Shake2());
-                }
-                if (Mathf.Abs(lowestInvaderY - player.transform.position.y) <= distToShake3 && _isShaking3 && _hasReachShake3)
-                {
-                    _isShaking3 = true;
-                    StartCoroutine(Shake3());
-                }*/
     }
+
+
     private void StopCurrentShake()
     {
         if (currentShake != null)
@@ -114,7 +101,7 @@ public class ShakeScreen : MonoBehaviour
         Debug.Log("Shake1");
 
         _elapsedTime = 0f;   
-        while (_elapsedTime < _duration1 && !_isShaking2)
+        while (_elapsedTime < _duration1)
         {
             _elapsedTime += Time.deltaTime;
             _power = ShakeCurve.Evaluate(_elapsedTime / _duration1);
