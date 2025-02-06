@@ -106,11 +106,11 @@ Shader "PIXEL"
 /*ASEBEGIN
 Version=19801
 Node;AmplifyShaderEditor.TextureCoordinatesNode;4;-800,400;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;5;-704,544;Inherit;False;Property;_PixelX;Pixel X;0;0;Create;True;0;0;0;False;0;False;200;0;0;5000;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;6;-384,592;Inherit;False;Property;_PixelY;Pixel Y;1;0;Create;True;0;0;0;False;0;False;200;0;0;5000;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TemplateShaderPropertyNode;1;-560,144;Inherit;False;0;0;_MainTex;Shader;False;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;5;-704,544;Inherit;False;Property;_PixelX;Pixel X;0;0;Create;True;0;0;0;False;0;False;200;200;0;5000;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;6;-384,592;Inherit;False;Property;_PixelY;Pixel Y;1;0;Create;True;0;0;0;False;0;False;200;320;0;5000;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCPixelate;3;-480,400;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.SamplerNode;2;-224,80;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.TemplateShaderPropertyNode;1;-560,144;Inherit;False;0;0;_MainTex;Pass;False;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;2;-224,80;Inherit;True;Property;_TextureSample0;Texture Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;0,0,0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;128,80;Float;False;True;-1;3;AmplifyShaderEditor.MaterialInspector;0;8;PIXEL;32139be9c1eb75640a847f011acf3bcf;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;True;7;False;;False;False;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;False;0;;0;0;Standard;0;0;1;True;False;;False;0
 WireConnection;3;0;4;0
 WireConnection;3;1;5;0
@@ -119,4 +119,4 @@ WireConnection;2;0;1;0
 WireConnection;2;1;3;0
 WireConnection;0;0;2;0
 ASEEND*/
-//CHKSM=7EFD9AC672368F4C9455B64E335A7AE3AA1627DC
+//CHKSM=099B7C7E3FAF631E565580846A713276AEE402B9
