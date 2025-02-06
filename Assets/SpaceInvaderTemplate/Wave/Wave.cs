@@ -14,6 +14,8 @@ public class Wave : MonoBehaviour
 
     [SerializeField] private Invader invaderPrefab = null;
     [SerializeField] private Invader invaderPrefab2 = null;
+    [SerializeField] private Invader invaderPrefab3 = null;
+
 
     // Initial bounds in which invaders are spawning.
     [SerializeField] public Vector2 bounds;
