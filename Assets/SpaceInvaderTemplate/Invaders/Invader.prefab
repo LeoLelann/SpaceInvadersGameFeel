@@ -635,8 +635,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7369880722360228486, guid: 47d2029f071079c4a98ac35325b21f24, type: 3}
   shootAt: {fileID: 8808591723042360307}
   collideWithTag: Player
-  deathMat: {fileID: 0}
-  explosionEffect: {fileID: 0}
+  deathMat: {fileID: 2100000, guid: e0122f6cc047deb4f8ee867aa0a84dac, type: 2}
+  explosionEffect: {fileID: 6643881462778378500, guid: 1cd2f77241d1a0946882efd9f7c0b251, type: 3}
   timeToDestroy: 0
   _sprite2: {fileID: 7005465045456132946, guid: 104c83334fa2ad14382fa1d8d9ff49b5, type: 3}
   _sprite3: {fileID: -4437535524309630991, guid: eea6b89a27c21c8449433aefe9422486, type: 3}
