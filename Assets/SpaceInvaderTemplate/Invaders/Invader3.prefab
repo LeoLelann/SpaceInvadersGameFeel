@@ -577,6 +577,7 @@ MonoBehaviour:
   shootAt: {fileID: 6393330241020975862}
   collideWithTag: Player
   deathMat: {fileID: 2100000, guid: e0122f6cc047deb4f8ee867aa0a84dac, type: 2}
+  explosionEffect: {fileID: 6643881462778378500, guid: 1cd2f77241d1a0946882efd9f7c0b251, type: 3}
   timeToDestroy: 2
 --- !u!61 &3730787514922142155
 BoxCollider2D:

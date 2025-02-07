@@ -17,6 +17,7 @@ public class Invader : MonoBehaviour
     [SerializeField] private string collideWithTag = "Player";
 
     [SerializeField] private Material deathMat;
+    [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float timeToDestroy;
     SpriteRenderer spriteRenderer;
     private Collider2D col;
@@ -59,6 +60,12 @@ public class Invader : MonoBehaviour
         float startValue = 0f;
         float endValue = 4f;
 
+        GameObject effectInstance = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        ParticleSystem ps = effectInstance.GetComponent<ParticleSystem>();
+
+        ps.Play();
+        Destroy(effectInstance, ps.main.duration);
+
         while (elapsedTime < timeToDestroy)
         {
             elapsedTime += Time.deltaTime;
@@ -67,7 +74,8 @@ public class Invader : MonoBehaviour
             yield return null;
         }
 
-        OnDestroy();
+
+            OnDestroy();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
