@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private SoundManager _soundManager;
+    private AudioSource _audioSource;
+    
+    
     [SerializeField] private float deadzone = 0.3f;
     [SerializeField] private float speed = 1f;
 
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
+        _audioSource = _soundManager.PlaySound(0,Random.Range(1f,1.2f));
         Instantiate(bulletPrefab, shootAt.position, Quaternion.identity);
         lastShootTimestamp = Time.time;
     }
