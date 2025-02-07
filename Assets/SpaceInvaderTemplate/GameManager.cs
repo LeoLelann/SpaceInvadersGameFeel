@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CoinDelay()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
         _musicMenu.SetActive(false);
         _musicGame.SetActive(true);
         foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
@@ -129,10 +129,18 @@ public class GameManager : MonoBehaviour
     public void PlayGameOver()
     {
         Debug.Log("Game Over");
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         if (isPlayerDead) return;
-        _soundManager.PlaySound(2, 1);
         isPlayerDead = true;
+        StartCoroutine(DeathDelay());
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        _soundManager.PlaySound(2, 1);
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("END!!!!!!!!!");
+        Application.Quit();
     }
 
     public void OnDrawGizmos()
