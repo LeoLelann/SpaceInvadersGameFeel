@@ -129,7 +129,6 @@ public class GameManager : MonoBehaviour
     public void PlayGameOver()
     {
         Debug.Log("Game Over");
-        //Time.timeScale = 0f;
         if (isPlayerDead) return;
         isPlayerDead = true;
         StartCoroutine(DeathDelay());
@@ -138,7 +137,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator DeathDelay()
     {
         _soundManager.PlaySound(2, 1);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0f;
         Debug.Log("END!!!!!!!!!");
         Application.Quit();
     }
