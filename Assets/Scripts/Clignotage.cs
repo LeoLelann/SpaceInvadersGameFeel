@@ -4,12 +4,14 @@ using System.Collections;
 
 public class Clignotage : MonoBehaviour
 {
+    [SerializeField] private SoundManager _soundManager;
+    
     private Light2D spot;
     public float minInterval = 1.25f;  // Intervalle minimum avant extinction
     public float maxInterval = 2.5f;   // Intervalle maximum avant extinction
-    public float minOnTime = 2.5f;     // Temps minimum allumé avant extinction
-    public float flickerDuration = 0.5f; // Durée du clignotement frénétique
-    public float flickerSpeed = 0.1f;  // Vitesse du clignotement frénétique
+    public float minOnTime = 2.5f;     // Temps minimum allumï¿½ avant extinction
+    public float flickerDuration = 0.5f; // Durï¿½e du clignotement frï¿½nï¿½tique
+    public float flickerSpeed = 0.1f;  // Vitesse du clignotement frï¿½nï¿½tique
 
     void Start()
     {
@@ -23,18 +25,18 @@ public class Clignotage : MonoBehaviour
         {
             // Clignotement rapide avant allumage complet
             yield return StartCoroutine(FlickerEffect());
-            spot.enabled = true;  // Rester allumé
-            yield return new WaitForSeconds(minOnTime); // Attendre le temps minimum allumé
+            spot.enabled = true;  // Rester allumï¿½
+            yield return new WaitForSeconds(minOnTime); // Attendre le temps minimum allumï¿½
 
-            // Attendre un délai aléatoire avant d'éteindre
+            // Attendre un dï¿½lai alï¿½atoire avant d'ï¿½teindre
             float randomOffTime = Random.Range(minInterval, maxInterval);
             yield return new WaitForSeconds(randomOffTime);
 
-            // Clignotement rapide avant extinction complète
+            // Clignotement rapide avant extinction complï¿½te
             yield return StartCoroutine(FlickerEffect());
-            spot.enabled = false; // Éteindre complètement
+            spot.enabled = false; // ï¿½teindre complï¿½tement
 
-            // Attendre un délai aléatoire avant de rallumer
+            // Attendre un dï¿½lai alï¿½atoire avant de rallumer
             float randomOnTime = Random.Range(minInterval, maxInterval);
             yield return new WaitForSeconds(randomOnTime);
         }
@@ -42,10 +44,12 @@ public class Clignotage : MonoBehaviour
 
     IEnumerator FlickerEffect()
     {
+        _soundManager.PlaySound(8, 1);
+        
         float elapsedTime = 0f;
         while (elapsedTime < flickerDuration)
         {
-            spot.enabled = !spot.enabled; // Alterner l'état de la lumière
+            spot.enabled = !spot.enabled; // Alterner l'ï¿½tat de la lumiï¿½re
             yield return new WaitForSeconds(flickerSpeed); // Attendre un court instant
             elapsedTime += flickerSpeed;
         }

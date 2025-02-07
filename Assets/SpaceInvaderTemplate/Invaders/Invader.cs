@@ -7,6 +7,8 @@ using UnityEngine;
 public class Invader : MonoBehaviour
 {
     [SerializeField] private AudioSource _sourceDeath;
+    [SerializeField] private AudioSource _sourceRandom1;
+    [SerializeField] private AudioSource _sourceRandom2;
     
     //Scoring
     private GameManager _gameManager;
@@ -35,6 +37,8 @@ public class Invader : MonoBehaviour
         this.GridIndex = gridIndex;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _sourceDeath = GameObject.Find("AudioSourceForInvaders").GetComponent<AudioSource>();
+        _sourceRandom1 = GameObject.Find("AudioSourceForInvadersRandom1").GetComponent<AudioSource>();
+        _sourceRandom2 = GameObject.Find("AudioSourceForInvadersRandom2").GetComponent<AudioSource>();
         _player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
@@ -87,6 +91,7 @@ public class Invader : MonoBehaviour
             //Destroy(gameObject); //OLD
             Death();
             _gameManager.UpdatePlayerScore();
+            RandomSounds();
         }
         if (collision.gameObject.tag == "level2")
         {
@@ -98,6 +103,22 @@ public class Invader : MonoBehaviour
             spriteRenderer.sprite = _sprite3;
         }
         
+    }
+
+    private void RandomSounds()
+    {
+        int probability = UnityEngine.Random.Range(0, 100);
+        if (probability <= 50)
+        {
+            if (probability % 2 == 0)
+            {
+                _sourceRandom1.Play();
+            }
+            else
+            {
+                _sourceRandom2.Play();
+            }
+        }
     }
 
     public void Shoot()

@@ -30,6 +30,7 @@ public class SoundManager : MonoBehaviour
                 source.pitch = pitch;
                 source.Play();
                 return source;
+                break;
             }
         }
         return null;
