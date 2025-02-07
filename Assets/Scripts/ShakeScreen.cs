@@ -64,7 +64,7 @@ public class ShakeScreen : MonoBehaviour
 
         float lowestInvaderY = wave.GetLowestRowPosition();
         float distance = Mathf.Abs(lowestInvaderY - player.transform.position.y);
-
+        Debug.Log(distance);
         if (distance <= distToShake3 && !_isShaking3)
         {
             StopCurrentShake();
@@ -82,6 +82,7 @@ public class ShakeScreen : MonoBehaviour
             _isShaking1 = true;
             currentShake = StartCoroutine(Shake1());
         }
+        //Debug.DrawLine(player.transform.position, new Vector3(0,distToShake3,0), Color.blue);
     }
 
 
@@ -110,6 +111,7 @@ public class ShakeScreen : MonoBehaviour
         }
         transform.position = _startPos;
         yield return new WaitForSeconds(_timeBtwShake1);
+        StopCurrentShake();
         _isShaking1 = false;
     }
     IEnumerator Shake2()
@@ -128,6 +130,7 @@ public class ShakeScreen : MonoBehaviour
         }
         transform.position = _startPos;
         yield return new WaitForSeconds(_timeBtwShake2);
+        StopCurrentShake();
         _isShaking2 = false;
     }
     IEnumerator Shake3()
@@ -145,6 +148,7 @@ public class ShakeScreen : MonoBehaviour
         }
         transform.position = _startPos;
         yield return new WaitForSeconds(_timeBtwShake3);
+        StopCurrentShake();
         _isShaking3 = false;
     }
 }
