@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
+using Random = Unity.Mathematics.Random;
 
 [DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _coinSound;
     bool isPlayerDead = false;
     
+    //[SerializeField] private TextMeshProUGUI _newWaveUI;
+    [SerializeField] private GameObject _newWaveUI;
     
     public enum DIRECTION { Right = 0, Up = 1, Left = 2, Down = 3 }
 
@@ -71,10 +74,24 @@ public class GameManager : MonoBehaviour
 
     public void StartNewWave()
     {
+        
+        //_newWaveUI.color = Mathf.Lerp(Vector4(0,0,100,0), 1.0f, 1f);
+        StartCoroutine(AgainDelay());
         _newWave = Instantiate(_wave, transform.position + new Vector3(0, 1.75f, 0), Quaternion.identity);
         Destroy(_wave);
         _wave = _newWave;
+
+        /*_newWave = Instantiate(_wave, transform.position + new Vector3(0, 1.75f, 0), Quaternion.identity);
+        Destroy(_wave);
+        _wave = _newWave;*/
         //_wave.SetActive(true);
+    }
+
+    private IEnumerator AgainDelay()
+    {
+        _newWaveUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _newWaveUI.SetActive(false);
     }
 
     public Vector3 KeepInBounds(Vector3 position)

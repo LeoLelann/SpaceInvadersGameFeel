@@ -45,7 +45,10 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        _audioSource = _soundManager.PlaySound(0,Random.Range(1f,1.2f));
+        int randomForSound = Random.Range(0, 3);
+        if (randomForSound == 0) _audioSource = _soundManager.PlaySound(0,Random.Range(1f,1.2f),0.2f);
+        else if (randomForSound == 1) _audioSource = _soundManager.PlaySound(10,Random.Range(1f,1.2f),0.2f);
+        else _audioSource = _soundManager.PlaySound(11,Random.Range(1f,1.2f),0.2f);
         Instantiate(bulletPrefab, shootAt.position, Quaternion.identity);
         lastShootTimestamp = Time.time;
     }

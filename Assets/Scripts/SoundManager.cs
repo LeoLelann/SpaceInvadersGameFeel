@@ -35,6 +35,23 @@ public class SoundManager : MonoBehaviour
         }
         return null;
     }
+    
+    public AudioSource PlaySound(int clip, float pitch, float volume)
+    {
+        foreach (AudioSource source in audioSources)
+        {
+            if (!source.isPlaying)
+            {
+                source.clip = sounds[clip];
+                source.pitch = pitch;
+                source.volume = volume;
+                source.Play();
+                return source;
+                break;
+            }
+        }
+        return null;
+    }
 
     public void StopSound(AudioSource source)
     {
