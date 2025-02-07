@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -10,6 +11,11 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private SoundManager _soundManager;
+    [SerializeField] private GameObject _musicGame;
+    [SerializeField] private GameObject _musicMenu;
+    [SerializeField] private GameObject _coinSound;
+    bool isPlayerDead = false;
+    
     
     public enum DIRECTION { Right = 0, Up = 1, Left = 2, Down = 3 }
 
@@ -38,15 +44,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!_isGameStarted && Input.GetKeyDown(KeyCode.Space))
+        if (!_isGameStarted && Input.GetKeyDown(KeyCode.E))
         {
             //_soundManager.PlaySound(1, 1);
-            foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
-            _wave.SetActive(true);
+            _coinSound.SetActive(true);
+            StartCoroutine(CoinDelay());
             _isGameStarted = true;
         }
         
         _scoreText.text = $"Score: {_playerScore}";
+    }
+
+    private IEnumerator CoinDelay()
+    {
+        yield return new WaitForSeconds(3.5f);
+        _musicMenu.SetActive(false);
+        _musicGame.SetActive(true);
+        foreach (GameObject uiElement in _uiElements) {uiElement.SetActive(false);}
+        _wave.SetActive(true);
     }
 
     public void UpdatePlayerScore()
@@ -115,6 +130,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Time.timeScale = 0f;
+        if (isPlayerDead) return;
+        _soundManager.PlaySound(2, 1);
+        isPlayerDead = true;
     }
 
     public void OnDrawGizmos()

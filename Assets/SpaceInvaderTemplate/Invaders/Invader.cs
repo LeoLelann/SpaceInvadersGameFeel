@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class Invader : MonoBehaviour
 {
+    [SerializeField] private AudioSource _sourceDeath;
+    [SerializeField] private AudioSource _sourceRandom1;
+    [SerializeField] private AudioSource _sourceRandom2;
+    
     //Scoring
     private GameManager _gameManager;
     private GameObject _player;
@@ -20,6 +24,8 @@ public class Invader : MonoBehaviour
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float timeToDestroy;
     SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite _sprite2;
+    [SerializeField] private Sprite _sprite3;
     private Collider2D col;
 
 
@@ -31,6 +37,9 @@ public class Invader : MonoBehaviour
     {
         this.GridIndex = gridIndex;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _sourceDeath = GameObject.Find("AudioSourceForInvaders").GetComponent<AudioSource>();
+        _sourceRandom1 = GameObject.Find("AudioSourceForInvadersRandom1").GetComponent<AudioSource>();
+        _sourceRandom2 = GameObject.Find("AudioSourceForInvadersRandom2").GetComponent<AudioSource>();
         _player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
@@ -80,17 +89,44 @@ public class Invader : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag != collideWithTag) { return; }
+        //if(collision.gameObject.tag != collideWithTag) { return; }
 
-        /*if (collision.tag == collideWithTag)
+        if (collision.gameObject.tag == "Bullet")
         {
-            
-        }*/
+            //if (_sourceDeath.isPlaying) _sourceDeath.Stop();
+            _sourceDeath.Play();
+            Destroy(collision.gameObject);
+            //Destroy(gameObject); //OLD
+            Death();
+            _gameManager.UpdatePlayerScore();
+            RandomSounds();
+        }
+        if (collision.gameObject.tag == "level2")
+        {
+            Debug.Log("Level 2");
+            spriteRenderer.sprite = _sprite2;
+        }
+        if (collision.gameObject.tag == "level3")
+        {
+            spriteRenderer.sprite = _sprite3;
+        }
         
-        Destroy(collision.gameObject);
-        //Destroy(gameObject);
-        Death();
-        _gameManager.UpdatePlayerScore();
+    }
+
+    private void RandomSounds()
+    {
+        int probability = UnityEngine.Random.Range(0, 100);
+        if (probability <= 50)
+        {
+            if (probability % 2 == 0)
+            {
+                _sourceRandom1.Play();
+            }
+            else
+            {
+                _sourceRandom2.Play();
+            }
+        }
     }
 
     public void Shoot()
@@ -107,7 +143,5 @@ public class Invader : MonoBehaviour
         
         _eyeL.transform.Rotate(0, 0, angle1);
         _eyeR.transform.Rotate(0, 0, angle2);
-
-        Debug.Log(_player.transform.position);
     }
 }
